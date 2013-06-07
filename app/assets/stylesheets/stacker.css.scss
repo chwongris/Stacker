@@ -1,0 +1,61 @@
+.rest_tile{
+  width: 7em;
+  height: 9em;
+  float: left;
+  background-color: red;
+  margin: 0.5em;
+  padding: 1em;
+}
+
+.event_tile{
+  width: 7em;
+  height: 9em;
+  float: left;
+  background-color: blue;
+  margin: 0.5em;
+  padding: 1em;
+}
+
+#tilebox{
+  position: relative;
+  overflow: hidden;
+  display: inline;
+  top: -7em;
+  width: 7em;
+  height: 100%;
+  color: #fff;
+  border-top: 1px solid rgba(0, 0, 0, .9);
+}
+
+#tilename{
+  margin-left: 0.5em;
+  font-size: 1em;
+  color: white;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+}
+
+#tileoverlay{
+position: absolute;
+height: 100%;
+width: 100%;
+background: linear-gradient(#000 0%, rgba(0, 0, 0, .7) 100%);
+border-top: 1px solid rgba(0, 0, 0, .3);
+top: 0;
+opacity: .7;
+}
+
+#googlemap{
+  height:20em;
+  width:100%;
+}
+
+#map-canvas{
+  height:20em;
+  width:100%;
+}
+
+#start{
+  width: 100%;
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stacker</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "application" %>
+  <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGWlVKhl5vwogbFLmGgZF5-EIh3WUfg-8&sensor=false">
+  </script>
+</head>
+<body>
+  <div class="navbar navbar-top navbar-inverse">
+    <div class="navbar-inner">
+      <div class="container-fluid">
+
+        <a class="brand" href="#">Stacker</a>
+
+        <!-- the toggle buttons. notice the data-targets on them, they point to the topbar/sidebar -->
+
+        <ul class="nav pull-right">
+          <li class="toggle-primary-sidebar hidden-desktop" data-toggle="collapse" data-target=".nav-collapse-primary"><a><i class="icon-th-list"></i></a></li>
+          <li class="collapsed hidden-desktop" data-toggle="collapse" data-target=".nav-collapse-top"><a><i class="icon-align-justify"></i></a></li>
+        </ul>
+
+        <div class="nav-collapse nav-collapse-top">
+
+          <ul class="nav full pull-right">
+            <% if user_signed_in? %>
+            <li class="dropdown user-avatar">
+
+              <!-- the dropdown has a custom user-avatar class, this is the small avatar with the badge -->
+
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span>
+                    <img class="menu-avatar" src="<%= current_user.image_url_small%>" /> <span>
+
+                    <% full_name = current_user.first_name + " " + current_user.last_name %>
+                    <%= full_name %> <i class="icon-caret-down"></i></span>
+                   <!--  <span class="badge badge-dark-red">5</span> -->
+                  </span>
+              </a>
+
+              <ul class="dropdown-menu">
+
+                <!-- the first element is the one with the big avatar, add a with-image class to it -->
+
+                <li class="with-image">
+                  <div class="avatar">
+                    <img src="<%= current_user.image_url%>" />
+                  </div>
+                  <span><%= full_name %></span>
+                </li>
+                
+                <li>
+                  <span><%= link_to destroy_user_session_path do %></span>
+                  <i class="icon-off"></i>
+                  Log Off
+                  <% end %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <% else %>
+          <% end %>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<section id="content">
+  <% if flash[:notice] %>
+      <p class="notice"><%= flash[:notice] %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p class="error"><%= flash[:alert] %></p>
+    <% end %>
+<%= yield %>
+</section>
+
+<%= javascript_include_tag "backbone" if @backbone %>
+
+</body>
+</html>

@@ -3,7 +3,8 @@ app.views.StartView = Backbone.View.extend({
   id: 'start',
   template: JST['templates/start'],
   events: {
-    'change #areasearch': 'areaSearch'
+    'change #areasearch': 'areaSearch',
+    'click #tilebox': 'favoriteList'
   },
   render: function() {
     var html = this.template();
@@ -55,6 +56,10 @@ app.views.StartView = Backbone.View.extend({
       zoomin(latlng);
       }
     });
+  },
+
+  favoriteList: function() {
+    alert("test");
   }
 
 });

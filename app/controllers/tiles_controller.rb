@@ -16,6 +16,12 @@ class TilesController < ApplicationController
     render :json => @events
   end
 
+  def index
 
+    # @user_tiles = 
+
+
+    # @render :json => @user_tiles
+  end
 
 end

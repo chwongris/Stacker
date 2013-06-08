@@ -9,11 +9,24 @@ app.Router = Backbone.Router.extend({
     
     var current_user = new app.models.User;
     current_user.url = 'users/me';
-    current_user.fetch();
+    current_user.fetch({
+    success: function(user, response, options){
 
-    var start = new app.views.StartView();
-    $('#content').html(start.render().el);
-    initMap();
+    current_user.id = user.id
+    // this.tileList = new app.collections.TileList();
+    // this.tileList.url = '/users/' + current_user.id + '/tiles';
+    // this.tileList.on("reset", this.updateCounts);
+    // this.tileList.fetch({
+    // success: function(){
+     var start = new app.views.StartView({model: current_user});
+     $('#content').html(start.render().el);
+     initMap();
+   // }
+   // });
+   }
+   });
+
   }
 
 });
+

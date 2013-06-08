@@ -1,5 +1,6 @@
 //= require ejs_production
 //= require backbone-min
+//= require backbone-relational
 //= require boot
 //= require router
 //= require_tree ./models

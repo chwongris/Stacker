@@ -20,6 +20,8 @@ gem 'ejs'
 gem 'json'
 gem "aws-s3", "~> 0.6.3"
 gem "fog", "~> 1.11.1"
+gem "select2-rails"
+gem 'masonry-rails'
 
 
 

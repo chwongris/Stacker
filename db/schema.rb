@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130606173624) do
+ActiveRecord::Schema.define(:version => 20130610213238) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(:version => 20130606173624) do
     t.string   "image_url"
   end
 
+  create_table "restaurant_tiles", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "restaurants", :force => true do |t|
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
@@ -51,10 +58,36 @@ ActiveRecord::Schema.define(:version => 20130606173624) do
     t.string   "yelp_url"
   end
 
+  create_table "stacks", :force => true do |t|
+    t.datetime "stackday"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "tiles", :force => true do |t|
     t.string   "name"
     t.float    "latitude"
     t.float    "longitude"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "type"
+  end
+
+  create_table "timeshells", :force => true do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.boolean  "allDay"
+    t.string   "title"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "restaurant_id"
+    t.integer  "stack_id"
+  end
+
+  create_table "user_tiles", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "tile_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

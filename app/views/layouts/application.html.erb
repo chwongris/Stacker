@@ -2,12 +2,22 @@
 <html>
 <head>
   <title>Stacker</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "applicationstart", :media => "all" %>
   <%= csrf_meta_tags %>
-  <%= javascript_include_tag "application" %>
+
+  <%= javascript_include_tag "applicationstart" %>
+
   <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGWlVKhl5vwogbFLmGgZF5-EIh3WUfg-8&sensor=false">
   </script>
+<script type="text/javascript">
+    <% if user_signed_in? %>
+    window.currentUser = {
+        id : "<%=current_user.id%>"
+    }
+    <% end %>
+
+</script>
 </head>
 <body>
   <div class="navbar navbar-top navbar-inverse">
@@ -70,15 +80,12 @@
     </div>
   </div>
 
-
+<!-- <div id="calendar">
+</div>
+ -->
 
 <section id="content">
-  <% if flash[:notice] %>
-      <p class="notice"><%= flash[:notice] %></p>
-    <% end %>
-    <% if flash[:alert] %>
-      <p class="error"><%= flash[:alert] %></p>
-    <% end %>
+
 <%= yield %>
 </section>
 

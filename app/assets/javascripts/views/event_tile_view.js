@@ -8,6 +8,16 @@ app.views.EventTileView = Backbone.View.extend({
     this.$el.html(this.template({
       model: this.model
     }));
+
+      var eventObject = {
+        title: this.model.attributes.name, // use the element's text as the event title
+        start: this.model.attributes.event_datetime,
+        type: this.model.constructor.modelType
+      };
+      
+      // store the Event Object in the DOM element so we can get to it later
+    this.$el.data('eventObject', eventObject);
+
     return this;
   }
 

@@ -1,7 +1,8 @@
 class Tile < ActiveRecord::Base
-  attr_accessible :latitude, :longitude, :name
+has_many :usertiles
+has_many :users, :through => :usertiles
 
-
+  attr_accessible :latitude, :longitude, :name, :type
   geocoded_by :my_cool_geocoding_method
 
   def self.my_cool_geocoding_method(search)
@@ -9,8 +10,6 @@ class Tile < ActiveRecord::Base
   end
 
   def location_search(searchterm, ipcity)
-
-
 
     latlng = []
 

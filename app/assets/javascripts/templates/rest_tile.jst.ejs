@@ -1,9 +1,8 @@
 
 
-<img src="<%= this.model.image_url %>"></img>
-<div id="tilebox">
-<span id="tilename"><%= this.model.name %>
-</span>
+<img src="<%= this.model.attributes.image_url %>"></img>
+<div id="resttilebox" data-id="<%= this.model.cid %>" >
 <div id="tileoverlay">
+  <%= this.model.attributes.name %>
 </div>
 </div>

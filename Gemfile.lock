@@ -131,6 +131,8 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    masonry-rails (0.2.0)
+      rails
     method_source (0.8.1)
     mime-types (1.23)
     mini_magick (3.5.0)
@@ -219,6 +221,9 @@ GEM
       multi_json
       rake
       yajl-ruby
+    select2-rails (3.4.2)
+      sass-rails
+      thor (~> 0.14)
     selenium-webdriver (2.32.1)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
@@ -280,6 +285,7 @@ DEPENDENCIES
   json
   koala (~> 1.7.0rc1)
   machinist (>= 2.0.0.beta2)
+  masonry-rails
   mini_magick
   omniauth
   omniauth-facebook
@@ -290,6 +296,7 @@ DEPENDENCIES
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   seatgeek
+  select2-rails
   simplecov
   thin
   uglifier (>= 1.0.3)

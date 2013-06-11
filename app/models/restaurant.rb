@@ -15,6 +15,12 @@ class Restaurant < ActiveRecord::Base
   :category,
   :yelp_url
 
+  has_many :restaurantTiles
+  has_many :users, :through => :restaurantTiles
+
+  has_many :timeshells
+  has_many :stacks, :through => :timeshells
+
   
 
 def self.restaurant_search(latitude, longitude)

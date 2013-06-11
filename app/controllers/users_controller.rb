@@ -11,6 +11,7 @@ def index
   current_user.save
   end
   @backbone = true
+  render :index
 end
 
 def show
@@ -18,7 +19,7 @@ def show
 end
 
 def me
-    render :json => current_user
+  render :json => current_user
 end
 
 end

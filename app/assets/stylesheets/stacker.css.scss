@@ -1,19 +1,54 @@
-.rest_tile{
-  width: 7em;
-  height: 9em;
+#searchresults{
   float: left;
-  background-color: red;
-  margin: 0.5em;
-  padding: 1em;
+  margin-top: 40px;
+
 }
 
+#searchlayer{
+  height: 13em;
+  z-index: 999;
+  position: absolute;
+  top: 80px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding-top: 1.5em;
+  padding-left: 2em;
+  box-shadow: 5px 5px 2.5px #888;
+  border-radius: 5px;
+  color: white;
+}
+
+// #calendar{
+//   height: 80em;
+// }
+
+.rest_tile{
+  width: 6.8em;
+  height: 9em;
+  background-color: #B20000;
+  margin: 0.3em;
+  padding: 1em;
+  box-shadow: 3px 3px 2px #888;
+  border-radius: 5px;
+  }
+
 .event_tile{
-  width: 7em;
+  width: 6.8em;
   height: 9em;
   float: left;
   background-color: blue;
-  margin: 0.5em;
+  margin: 0.3em;
   padding: 1em;
+}
+
+#resttilebox{
+  position: relative;
+  overflow: hidden;
+  display: inline;
+  top: -7em;
+  width: 7em;
+  height: 100%;
+  color: #fff;
+  border-top: 1px solid rgba(0, 0, 0, .9);
 }
 
 #tilebox{
@@ -40,10 +75,9 @@
 position: absolute;
 height: 100%;
 width: 100%;
-background: linear-gradient(#000 0%, rgba(0, 0, 0, .7) 100%);
+background-color: rgba(0, 0, 0, 0.6);
 border-top: 1px solid rgba(0, 0, 0, .3);
 top: 0;
-opacity: .7;
 }
 
 #googlemap{

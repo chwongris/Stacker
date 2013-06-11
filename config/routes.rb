@@ -6,7 +6,12 @@ Stacker::Application.routes.draw do
     collection do
      get :me
     end
+    resources :restaurants
+    resources :stacks
+
   end
+
+  
 
   match 'restaurant_tiles' => 'tiles#restaurantsearch'
   match 'event_tiles' => 'tiles#eventsearch'

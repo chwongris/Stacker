@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
-  has_many :restaurantTiles
-  has_many :restaurants, :through => :restaurantTiles
+  # has_many :restaurantTiles
+  # has_many :restaurants, :through => :restaurantTiles
+
+  has_many :userTiles
+  has_many :tiles, :through => :userTiles
+
+  has_many :stacks
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

@@ -10,16 +10,16 @@ class Restaurant < ActiveRecord::Base
   :zip_code,
   :image_url,
   :yelp_rating,
-  # :foursquare_rating,
-  # :foursquare_review,
   :category,
   :yelp_url
 
-  has_many :restaurantTiles
-  has_many :users, :through => :restaurantTiles
+  has_many :tiles, :as => :tileable
 
-  has_many :timeshells
-  has_many :stacks, :through => :timeshells
+  # has_many :restaurantTiles
+  # has_many :users, :through => :restaurantTiles
+
+  # has_many :timeshells
+  # has_many :stacks, :through => :timeshells
 
   
 
@@ -34,8 +34,10 @@ def self.restaurant_search(latitude, longitude)
     @outdoorresults = []
       results["businesses"].each do |rest|
         # binding.pry
+        unless Restaurant.where('yelp_url = ?', rest['url']).empty?
+        restaurant = Restaurant.where('yelp_url = ?', rest['url']).first
+        else
         restaurant = Restaurant.new
-
         restaurant.name = rest["name"] 
         restaurant.yelp_id = rest["id"] 
         restaurant.city = rest["location"]["city"]
@@ -47,8 +49,8 @@ def self.restaurant_search(latitude, longitude)
         restaurant.category = rest["categories"][0][0]
         restaurant.yelp_url = rest["url"] 
         restaurant.image_url = rest["image_url"]
+        end
         @outdoorresults << restaurant
-
       end
 
       return @outdoorresults

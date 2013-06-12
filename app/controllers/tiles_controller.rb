@@ -16,15 +16,25 @@ class TilesController < ApplicationController
     result = request.location
     ipcity = result.data["city"]
     latlng = Tile.new.location_search(params[:searchterm], ipcity)
-    @events = Event.get_events(latlng[0],latlng[1], "2013-06-11")
+    @events = Event.get_events(latlng[0],latlng[1], "2013-06-13")
     render :json => @events
   end
 
   def index
     
-    @user_tiles = current_user.restaurants
+    @user_tiles = current_user.userTiles
     render :json => @user_tiles
     
   end
+
+
+  def create
+
+  @tileable = Tile.new(params[:tile])
+  @tileable.save
+  render :json => @tileable
+
+  end
+
 
 end

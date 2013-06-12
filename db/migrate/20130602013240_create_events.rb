@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.float :seatgeek_score
       t.float :average_price
       t.string :event_datetime
-      t.string :performers
+      t.text :performers
       t.string :performers_url
       t.string :venue_name
       t.string :venue_address

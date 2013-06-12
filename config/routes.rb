@@ -2,15 +2,18 @@ Stacker::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations"}
  
   resources :users do
-    resources :tiles
+  
     collection do
      get :me
     end
-    resources :restaurants
+    
     resources :stacks
 
   end
 
+  resources :tiles
+  resources :restaurants
+  resources :events
   
 
   match 'restaurant_tiles' => 'tiles#restaurantsearch'

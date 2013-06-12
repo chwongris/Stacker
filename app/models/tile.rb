@@ -1,16 +1,17 @@
 class Tile < ActiveRecord::Base
-has_many :usertiles
-has_many :users, :through => :usertiles
+  belongs_to :tileable, :polymorphic => true
 
-  attr_accessible :latitude, :longitude, :name, :type
-  geocoded_by :my_cool_geocoding_method
+  has_many :stacktiles
+  has_many :stacks, :through => :stacktiles
 
-  def self.my_cool_geocoding_method(search)
-    "#{search}"
-  end
+  attr_accessible :name, :tileable_id, :tileable_type, :allDay, :end, :start, :title, :stack_id
+
+
+
+
+
 
   def location_search(searchterm, ipcity)
-
     latlng = []
 
     if ipcity == ""
@@ -23,7 +24,5 @@ has_many :users, :through => :usertiles
     # latitude = latlng[0]
     # longitude = latlng[1]
   end
-
-
 
 end

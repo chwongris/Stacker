@@ -14,6 +14,8 @@ class Event < ActiveRecord::Base
                   :latitude,
                   :longtitude
 
+  has_many :tiles, :as => :tileable
+
   def seatgeek
     @seatgeek ||= SeatGeek::Connection.new
   end
@@ -24,6 +26,10 @@ class Event < ActiveRecord::Base
       @seatgeek ||= SeatGeek::Connection.new
       results = @seatgeek.events(lat:latitude, lon:longitude, range:"10mi", sort:"score.desc", per_page: 100, datetime_utc: date)
       results["events"].each do |result|
+
+        unless Event.where('event_url = ?', result["url"]).empty?
+        event = Event.where('event_url = ?', result["url"]).first
+        else
         event = Event.new
         event.name = result["title"]
         event.average_price = result["stats"]["average_price"]
@@ -39,8 +45,11 @@ class Event < ActiveRecord::Base
         event.latitude = result["venue"]["location"]["lat"]
         event.longitude = result["venue"]["location"]["lon"]
         event.image_url = result["performers"].first["image"]
+        
+        end
         events << event
       end
+      
 
     return events
   end

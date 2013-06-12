@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610213238) do
+ActiveRecord::Schema.define(:version => 20130612031430) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20130610213238) do
     t.float    "seatgeek_score"
     t.float    "average_price"
     t.string   "event_datetime"
-    t.string   "performers"
+    t.text     "performers"
     t.string   "performers_url"
     t.string   "venue_name"
     t.string   "venue_address"
@@ -63,15 +63,26 @@ ActiveRecord::Schema.define(:version => 20130610213238) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "stacktiles", :force => true do |t|
+    t.integer  "tile_id"
+    t.integer  "stack_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tiles", :force => true do |t|
     t.string   "name"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "tileable_id"
+    t.string   "tileable_type"
+    t.datetime "end"
+    t.datetime "start"
+    t.boolean  "allDay"
+    t.string   "title"
   end
 
   create_table "timeshells", :force => true do |t|

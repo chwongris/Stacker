@@ -14,11 +14,14 @@ app.Router = Backbone.Router.extend({
 
         current_user.id = user.id
         current_user.RestTileList = new app.collections.RestTileList();
-        current_user.RestTileList.url = '/users/' + current_user.id + '/tiles';
+        current_user.RestTileList.url = '/tiles';
         current_user.RestTileList.on("reset", this.updateCounts);
 
         current_user.rest_tile_search = new app.collections.RestTileList();
         current_user.event_tile_search = new app.collections.EventTileList();
+
+        current_user.stack_list = new app.collections.StackList();
+
 
         current_user.RestTileList.fetch({
           success: function(){
@@ -53,7 +56,14 @@ app.Router = Backbone.Router.extend({
                 // assign it the date that was reported
                 if (copiedEventObject.start == undefined ){
                 copiedEventObject.start = date;
-                }else{}
+                copiedEventObject.end = (date.getTime() + 1800000*4)/1000;
+                }else{
+                copiedEventObject.start = copiedEventObject.start + "Z";
+                var time = $.fullCalendar.parseDate( copiedEventObject.start );
+                copiedEventObject.start = time;
+                copiedEventObject.end = (time.getTime() + 1800000*4)/1000;
+                }
+                
                 copiedEventObject.allDay = allDay;
                 copiedEventObject.cid = this.id;
                 

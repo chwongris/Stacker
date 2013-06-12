@@ -164,26 +164,64 @@ favoriteList: function(e) {
   var test = $('#calendar').fullCalendar( 'clientEvents' );
   console.log(test);
 
+   var newstack = new app.models.Stack
+   newstack.attributes.name = "BeansStack"
+   newstack.attributes.stackday = "2012/12/04"
+   newstack.newstacktiles = new app.collections.Stacktiles();
+
+  _this.model.stack_list.create(newstack, {wait: true});
+  //need to get the stackid for StackTile
+
+  // _this.model.stack_list.
+
   test.forEach(function(calobject){
-  switch(calobject.type)
-  {
-  case "Restaurant":
-    var saved = _this.model.rest_tile_search.get(calobject.cid);
-    saved.url = '/users/' + current_user.id + '/tiles';
-    save();
-    console.log(saved);
-    break;
-  case "Event":
-    var saved = _this.model.event_tile_search.get(calobject.cid);
-    console.log(saved);
-    break;
-  }
+    switch(calobject.type)
+    {
+      case "Restaurant":
+      var saved = _this.model.rest_tile_search.get(calobject.cid);
+      saved.save(null,{
+        success: function(response){
+        // console.log(model);
+        console.log(response);
+
+        var resttileable = new app.models.Tileable
+        resttileable.attributes.name = calobject.title
+        resttileable.attributes.tileable_id = response.id
+        resttileable.attributes.tileable_type = calobject.type
+        resttileable.attributes.end = calobject.end
+        resttileable.attributes.start = calobject.start
+        resttileable.attributes.allDay = calobject.allDay
+        _.last(_this.model.stack_list.models).newstacktiles.create(resttileable);
+        // _this.model.stack_list.newstack.newstacktiles.create(resttileable);
+        // resttileable.save();
+      }
+    });
+
+      break;
+      case "Event":
+      var saved = _this.model.event_tile_search.get(calobject.cid);
+      saved.save(null,{
+        success: function(response){
+          var eventtileable = new app.models.Tileable
+          eventtileable.attributes.name = calobject.title
+          eventtileable.attributes.tileable_id = response.id
+          eventtileable.attributes.tileable_type = calobject.type
+          eventtileable.attributes.end = calobject.end
+          eventtileable.attributes.start = calobject.start
+          eventtileable.attributes.allDay = calobject.allDay
+          
+          _.last(_this.model.stack_list.models).newstacktiles.create(eventtileable);
+          // eventtileable.save();
+
+        }
+
+      });
+      break;
+    }
   // var saved = _this.model.rest_tile_search.get(calobject.cid);
   // _this.model.Stack.create(saved);
 });
 
-
-  
 }
 
 });

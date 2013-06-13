@@ -12,7 +12,8 @@ class Event < ActiveRecord::Base
                   :venue_cityzip, 
                   :venue_name,
                   :latitude,
-                  :longtitude
+                  :longtitude,
+                  :tiletype
 
   has_many :tiles, :as => :tileable
 
@@ -24,7 +25,7 @@ class Event < ActiveRecord::Base
     events = []
 
       @seatgeek ||= SeatGeek::Connection.new
-      results = @seatgeek.events(lat:latitude, lon:longitude, range:"10mi", sort:"score.desc", per_page: 100, datetime_utc: date)
+      results = @seatgeek.events(lat:latitude, lon:longitude, range:"8mi", sort:"score.desc", per_page: 100, datetime_utc: date)
       results["events"].each do |result|
 
         unless Event.where('event_url = ?', result["url"]).empty?
@@ -44,7 +45,7 @@ class Event < ActiveRecord::Base
         event.venue_cityzip = result["venue"]["extended_address"]
         event.latitude = result["venue"]["location"]["lat"]
         event.longitude = result["venue"]["location"]["lon"]
-
+        event.tiletype = "Concerts"
       
         if result["performers"].first["image"] == nil
             event.image_url = "http://images.elephantjournal.com/wp-content/uploads/2013/04/hands_in_the_air__in_concert_cc-100x100.jpg"

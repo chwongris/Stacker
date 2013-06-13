@@ -26,7 +26,14 @@ class Restaurant < ActiveRecord::Base
 
 def self.restaurant_search(latitude, longitude, term)
     @yelpdata = Yelp::Client.new
-    request = Yelp::V2::Search::Request::GeoPoint.new(:term => term, :latitude => latitude, :longitude => longitude, :consumer_key => 'mvNDV5Z5OYwaPTR_KcZsQw', 
+    
+    if term == "DanceClubs"
+      @type = "Dance Clubs"
+    else
+      @type = term
+    end
+
+    request = Yelp::V2::Search::Request::GeoPoint.new(:term => @type, :latitude => latitude, :longitude => longitude, :consumer_key => 'mvNDV5Z5OYwaPTR_KcZsQw', 
       :consumer_secret => 'N-czzlOPx5XsuPB1H0wPtmAKQjM', 
       :token => '2X-gnp-3qyIpont9bInLr3sakMzeJOHC', 
       :token_secret => 'xQ0mDjscdT00a3ZxDrHgnlaTDRg')

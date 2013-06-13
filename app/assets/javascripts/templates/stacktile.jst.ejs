@@ -1,8 +1,16 @@
 
+<div id="stacktilebox" data-id="<%= this.model.tileable.tiletype %>" >
+  <img src="<%= this.model.tileable.image_url %>"></img>
 
-<img src="<%= this.model.image_url %>"></img>
-<div id="resttilebox" data-id="<%= this.model.cid %>" >
-<div id="tileoverlay">
-  <%= this.model.name %>
-</div>
+  <div id="stackoverlay">
+    <div class="stacktilename">
+    <%= this.model.tileable.name %>
+  </div>
+    <div class="stackyelpstars">
+      <img src="<%= this.model.tileable.yelp_stars_url %>"></img>
+    </div>
+  </div>
+   <%= startdate %>
+   <%= enddate %>
+
 </div>

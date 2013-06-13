@@ -9,7 +9,7 @@ class TilesController < ApplicationController
     
     @restaurants = Restaurant.restaurant_search(latlng[0],latlng[1], "Restaurants")
     @bars = Restaurant.restaurant_search(latlng[0],latlng[1], "Bars")
-    @nightlife = Restaurant.restaurant_search(latlng[0],latlng[1], "Dance Clubs")
+    @nightlife = Restaurant.restaurant_search(latlng[0],latlng[1], "DanceClubs")
     # @restaurants.first.save
     render :json => @restaurants + @bars + @nightlife
   end

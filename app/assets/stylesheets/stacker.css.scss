@@ -1,20 +1,96 @@
+$restaurant: #B20000;
+$bar: #0d7d10;
+$concert: #1461ad;
+$dance: #5C5B5B;
+
+#createstack{
+  width:24.8em;
+}
+
+h3.stack{
+font-size: 24.5px;
+width: 10em;
+float: left;
+margin-left: 1em;
+}
+
+.stacktile{
+ width: 20em;
+ height: 5em;
+ margin: 0.2em;
+ padding: 1em;
+ box-shadow: 3px 3px 2px #888;
+ border-radius: 5px;
+
+}
+
+#Restaurants{
+  background-color: $restaurant;
+}
+
+#Concerts{
+  background-color: $concert;
+}
+
+#Bars{
+  background-color: $bar;
+}
+
+#DanceClubs{
+  background-color: $dance;
+}
+
+.stackyelpstars{
+  width: 5em;
+  float:right;
+  // position: relative;
+  // top: -3em;
+}
+
+.stacktilename{
+  float: left;
+}
+
+#stackoverlay{
+  position: absolute;
+  overflow: hidden;
+  width: 15em;
+  max-height: 5em;
+  margin-left: 5.5em;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  top: 0em;
+}
+
+#stacktilebox{
+  position: relative;
+  width: 5em;
+  height: 5em;
+  color: #fff;
+}
+
 #searchresults{
   float: left;
 
 }
 
 #scrollbox{
-  margin-top: 25px;
-  padding-left: 1em;
-    overflow-y: scroll;
-    overflow-x: hidden;
-      height: 46.5em;
+  margin-top: 15px;
+  // padding-left: 1em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 34.6em;
 }
+
+body{
+  overflow: hidden;
+}
+
 
 #searchlayer{
   height: 14.5em;
   width: 40em;
-  margin-left: 1.7em;
+  margin-left: 0.6em;
   z-index: 999;
   position: absolute;
   top: 90px;
@@ -27,15 +103,15 @@
 }
 
 #calendarbox{
-  height: 46.4em;
-  margin-top: 27px;
+  height: 34.8em;
+  margin-top: 13px;
 }
 
 
 .event_tile{
   width: 8em;
   height: 9em;
-  background-color: #1461ad;
+  background-color: $concert;
   margin: 0.3em;
   padding: 1em;
   box-shadow: 3px 3px 2px #888;
@@ -57,10 +133,10 @@
 .rest_tile{
   width: 8em;
   height: 9em;
-  background-color: #B20000;
+  background-color: $restaurant;
   margin: 0.3em;
   padding: 1em;
- box-shadow: 3px 3px 2px #888;
+  box-shadow: 3px 3px 2px #888;
   border-radius: 5px;
   float:left;
 }
@@ -68,7 +144,7 @@
 .bar_tile{
   width: 8em;
   height: 9em;
-  background-color: #0d7d10;
+  background-color: $bar;
   margin: 0.3em;
   padding: 1em;
   box-shadow: 3px 3px 2px #888;
@@ -79,7 +155,7 @@
 .dance_tile{
   width: 8em;
   height: 9em;
-  background-color: #5C5B5B;
+  background-color: $dance;
   margin: 0.3em;
   padding: 1em;
   box-shadow: 3px 3px 2px #888;
@@ -155,26 +231,26 @@
 .isotope .isotope-item {
   /* change duration value to whatever you like */
   -webkit-transition-duration: 0.5s;
-     -moz-transition-duration: 0.5s;
-      -ms-transition-duration: 0.5s;
-       -o-transition-duration: 0.5s;
-          transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
 }
 
 .isotope {
   -webkit-transition-property: height, width;
-     -moz-transition-property: height, width;
-      -ms-transition-property: height, width;
-       -o-transition-property: height, width;
-          transition-property: height, width;
+  -moz-transition-property: height, width;
+  -ms-transition-property: height, width;
+  -o-transition-property: height, width;
+  transition-property: height, width;
 }
 
 .isotope .isotope-item {
   -webkit-transition-property: -webkit-transform, opacity;
-     -moz-transition-property:    -moz-transform, opacity;
-      -ms-transition-property:     -ms-transform, opacity;
-       -o-transition-property:      -o-transform, opacity;
-          transition-property:         transform, opacity;
+  -moz-transition-property:    -moz-transform, opacity;
+  -ms-transition-property:     -ms-transform, opacity;
+  -o-transition-property:      -o-transform, opacity;
+  transition-property:         transform, opacity;
 }
 
 input{

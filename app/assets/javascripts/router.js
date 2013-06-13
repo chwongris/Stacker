@@ -1,7 +1,8 @@
 app.Router = Backbone.Router.extend({
 
   routes: {
-    '' : 'home'
+    '' : 'home',
+    '_=_' : 'home'
   },
 
   home: function () {
@@ -31,7 +32,7 @@ app.Router = Backbone.Router.extend({
            var start = new app.views.StartView({ model: current_user });
            $('#content').html(start.render().el);
            initMap();
-           $('.datepicker').datepicker()
+           $('.datepicker').datepicker();
           
            var myDate = new Date();
            var prettyDate =(myDate.getMonth()+1) + '/' + myDate.getDate() + '/' +
@@ -54,7 +55,7 @@ app.Router = Backbone.Router.extend({
             selectHelper: true,
             editable: true,
             droppable: true,
-            height: 563,
+            height: 440,
             drop: function(date, allDay) {
                 // alert("Dropped on " + date + " with allDay=" + allDay);
                 var dropped = current_user.rest_tile_search.get(this.id);

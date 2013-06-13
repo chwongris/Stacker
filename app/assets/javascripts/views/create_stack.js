@@ -1,5 +1,6 @@
 app.views.CreateStack = Backbone.View.extend({
   tagName: 'div',
+  className: 'box',
   id: 'createstack',
   template: JST['templates/createstack'],
   events: {
@@ -14,8 +15,8 @@ app.views.CreateStack = Backbone.View.extend({
     success: function(response){
         response.last().attributes.tiles.forEach(function(tile,i) {
         // addMarker(tile.attributes.latitude, tile.attributes.longitude, tile.attributes.name,'rest');
-        var stack = new app.views.StackTileView({ model: tile.tileable });
-        $('#searchresults').append(stack.render().el).fadeIn(300);
+        var stack = new app.views.StackTileView({ model: tile, id: tile.tileable.tiletype });
+        $('#stackresults').append(stack.render().el).fadeIn(300);
         // latlng.push([tile.attributes.latitude, tile.attributes.longitude]);
           });
     }}

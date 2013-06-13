@@ -10,14 +10,14 @@
   <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGWlVKhl5vwogbFLmGgZF5-EIh3WUfg-8&sensor=false">
   </script>
-<script type="text/javascript">
-    <% if user_signed_in? %>
-    window.currentUser = {
-        id : "<%=current_user.id%>"
-    }
-    <% end %>
+  <script type="text/javascript">
+  <% if user_signed_in? %>
+  window.currentUser = {
+    id : "<%=current_user.id%>"
+  }
+  <% end %>
 
-</script>
+  </script>
 </head>
 <body>
   <div class="navbar navbar-top navbar-inverse">
@@ -35,20 +35,23 @@
 
         <div class="nav-collapse nav-collapse-top">
 
+
+          <% if user_signed_in? %>
+
+
           <ul class="nav full pull-right">
-            <% if user_signed_in? %>
             <li class="dropdown user-avatar">
 
               <!-- the dropdown has a custom user-avatar class, this is the small avatar with the badge -->
 
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span>
-                    <img class="menu-avatar" src="<%= current_user.image_url_small%>" /> <span>
+                <span>
+                  <img class="menu-avatar" src="<%= current_user.image_url_small%>" /> <span>
 
-                    <% full_name = current_user.first_name + " " + current_user.last_name %>
-                    <%= full_name %> <i class="icon-caret-down"></i></span>
-                   <!--  <span class="badge badge-dark-red">5</span> -->
-                  </span>
+                  <% full_name = current_user.first_name + " " + current_user.last_name %>
+                  <%= full_name %> <i class="icon-caret-down"></i></span>
+                  <!--  <span class="badge badge-dark-red">5</span> -->
+                </span>
               </a>
 
               <ul class="dropdown-menu">
@@ -71,6 +74,11 @@
               </ul>
             </li>
           </ul>
+           <ul class="nav pull-right">
+            <li><a href="#" title="Manage users"><i class="icon-user"></i> Create Stack</a></li>
+            <li><a href="#" title="Go home"><i class="icon-home"></i> My Stacks </a></li>
+            <li><a href="#" title="Manage users"><i class="icon-user"></i> Users</a></li>
+          </ul>
           <% else %>
           <% end %>
 
@@ -82,11 +90,11 @@
 
 <!-- <div id="calendar">
 </div>
- -->
+-->
 
 <section id="content">
 
-<%= yield %>
+  <%= yield %>
 </section>
 
 <%= javascript_include_tag "backbone" if @backbone %>

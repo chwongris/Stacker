@@ -36,6 +36,8 @@ var styles = [
 }
 ];
 
+
+
 var styledMap = new google.maps.StyledMapType(styles,
   {name: "Styled Map"});
 
@@ -55,29 +57,48 @@ map.setMapTypeId('map_style');
 
 var latlng = [];
 
-function addMarker(latitude, longitude, title, whatami) {
+function addMarker(latitude, longitude, title, whatami, info) {
     var markerLatlng = new google.maps.LatLng(latitude, longitude);
     var markerSettings={
         position: markerLatlng,
         map: map,   
-        title: title
+        title: title,
+        animation: google.maps.Animation.DROP
       }
     //this way we still use the default marker when there is none set
     switch (whatami) {
-        case 'park':
-        markerSettings.icon = '/assets/parkmarker.png';
+        case 'concert':
+        markerSettings.icon = '/assets/concertmarker.png';
         break;
 
-        case 'rest':
-        markerSettings.icon = '/assets/restaurantmarker.png';
+        case 'Restaurants':
+        markerSettings.icon = '/assets/restaurantmarker2.png';
         break;
 
-        case 'meetup':
-        markerSettings.icon = '/assets/meetupmarker.png';
+        case 'Bars':
+        markerSettings.icon = '/assets/barmarker.png';
+        break;
+
+        case 'DanceClubs':
+        markerSettings.icon = '/assets/nightlifemarker.png';
         break;
       }
 
   var marker = new google.maps.Marker(markerSettings);
+
+  var infowindow = new google.maps.InfoWindow({
+    content: ""
+  });
+
+  infowindow.content = info;
+
+  google.maps.event.addListener(marker, 'click', function() {
+    map.setZoom(18);
+    map.setCenter(marker.getPosition());
+    map.panBy(-220, 0);
+    infowindow.open(map,marker);
+  });
+
   markers.push(marker);
   latlng.push(markerLatlng);
 };
@@ -116,3 +137,5 @@ function deleteOverlays() {
   clearOverlays();
   markers = [];
 }
+
+google.maps.event.addDomListener(window, 'load', initialize);

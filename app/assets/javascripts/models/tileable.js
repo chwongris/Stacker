@@ -1,5 +1,7 @@
 app.models.Tileable = Backbone.Model.extend({
 
- urlRoot: '/tiles'
+ urlRoot: '/tiles',
+
+ model: app.models.RestTile
 
 });

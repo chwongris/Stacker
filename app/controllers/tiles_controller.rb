@@ -7,16 +7,18 @@ class TilesController < ApplicationController
     ipcity = result.data["city"]
     latlng = Tile.new.location_search(params[:searchterm], ipcity)
     
-    @restaurants = Restaurant.restaurant_search(latlng[0],latlng[1])
+    @restaurants = Restaurant.restaurant_search(latlng[0],latlng[1], "Restaurants")
+    @bars = Restaurant.restaurant_search(latlng[0],latlng[1], "Bars")
+    @nightlife = Restaurant.restaurant_search(latlng[0],latlng[1], "Dance Clubs")
     # @restaurants.first.save
-    render :json => @restaurants
+    render :json => @restaurants + @bars + @nightlife
   end
 
   def eventsearch
     result = request.location
     ipcity = result.data["city"]
     latlng = Tile.new.location_search(params[:searchterm], ipcity)
-    @events = Event.get_events(latlng[0],latlng[1], "2013-06-13")
+    @events = Event.get_events(latlng[0],latlng[1], params[:searchdate])
     render :json => @events
   end
 

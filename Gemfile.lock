@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/argerim/select2-rails.git
+  revision: d8ab141656a3cd60e70a84a6c853a1bd77f0bfff
+  specs:
+    select2-rails (3.4.2)
+      sass-rails
+      thor (~> 0.14)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -221,9 +229,6 @@ GEM
       multi_json
       rake
       yajl-ruby
-    select2-rails (3.4.2)
-      sass-rails
-      thor (~> 0.14)
     selenium-webdriver (2.32.1)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
@@ -296,7 +301,7 @@ DEPENDENCIES
   rspec-rails (~> 2.0)
   sass-rails (~> 3.2.3)
   seatgeek
-  select2-rails
+  select2-rails!
   simplecov
   thin
   uglifier (>= 1.0.3)

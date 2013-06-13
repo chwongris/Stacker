@@ -1,8 +1,8 @@
 class Tile < ActiveRecord::Base
   belongs_to :tileable, :polymorphic => true
 
-  has_many :stacktiles
-  has_many :stacks, :through => :stacktiles
+  # has_many :stacktiles
+  belongs_to :stack
 
   attr_accessible :name, :tileable_id, :tileable_type, :allDay, :end, :start, :title, :stack_id
 

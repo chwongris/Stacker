@@ -1,6 +1,6 @@
 app.models.Stack = Backbone.Model.extend({
 
-  url: function() {
+  urlRoot: function() {
 
     var url = '/users/' + window.currentUser.id + '/stacks';
 

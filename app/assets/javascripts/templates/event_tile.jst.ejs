@@ -1,9 +1,12 @@
 
+<div id="resttilebox" data-id="<%= this.model.cid %>" >
+  <img id="tile" src="<%= this.model.attributes.image_url %>"></img>
+   <div id="tileoverlay">
+    <%= this.model.attributes.name %>
+    </div>
+    <%= date %>
+</div>
 
-<img src="<%= this.model.attributes.image_url %>"></img>
-<div id="tilebox" data-id="<%= this.model.cid %>">
-<span id="tilename"><%= this.model.attributes.name %>
-</span>
-<div id="tileoverlay">
-</div>
-</div>
+<!--     <span id="tilename">
+    </span> -->
+

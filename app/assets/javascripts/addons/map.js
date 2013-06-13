@@ -3,14 +3,19 @@ var map;
 var markers = [];
 
 function initMap() {
- var myLatlng = new google.maps.LatLng(40.7509915, -73.9888797);
+ var myLatlng = new google.maps.LatLng(40.7409915, -74.0098797);
 
  var mapOptions = {
   center: myLatlng,
   zoom: 12,
   mapTypeControlOptions: {
     mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
-  }
+  },
+  zoomControl: true,
+  zoomControlOptions: {
+  style: google.maps.ZoomControlStyle.SMALL,
+  position: google.maps.ControlPosition.TOP_RIGHT
+}
 };
 
 
@@ -87,6 +92,7 @@ for (var i = 0; i < latlng.length; i++) {
   latlngbounds.extend(latlng[i]);
 }
 map.fitBounds(latlngbounds);
+map.panBy(-200, 0);
 };
 // Sets the map on all markers in the array.
 function setAllMap(map) {

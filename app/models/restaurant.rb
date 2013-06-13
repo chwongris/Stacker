@@ -11,7 +11,8 @@ class Restaurant < ActiveRecord::Base
   :image_url,
   :yelp_rating,
   :category,
-  :yelp_url
+  :yelp_url,
+  :tiletype
 
   has_many :tiles, :as => :tileable
 
@@ -23,9 +24,9 @@ class Restaurant < ActiveRecord::Base
 
   
 
-def self.restaurant_search(latitude, longitude)
+def self.restaurant_search(latitude, longitude, term)
     @yelpdata = Yelp::Client.new
-    request = Yelp::V2::Search::Request::GeoPoint.new(:term => "restaurants", :latitude => latitude, :longitude => longitude, :consumer_key => 'mvNDV5Z5OYwaPTR_KcZsQw', 
+    request = Yelp::V2::Search::Request::GeoPoint.new(:term => term, :latitude => latitude, :longitude => longitude, :consumer_key => 'mvNDV5Z5OYwaPTR_KcZsQw', 
       :consumer_secret => 'N-czzlOPx5XsuPB1H0wPtmAKQjM', 
       :token => '2X-gnp-3qyIpont9bInLr3sakMzeJOHC', 
       :token_secret => 'xQ0mDjscdT00a3ZxDrHgnlaTDRg')
@@ -49,6 +50,7 @@ def self.restaurant_search(latitude, longitude)
         restaurant.category = rest["categories"][0][0]
         restaurant.yelp_url = rest["url"] 
         restaurant.image_url = rest["image_url"]
+        restaurant.tiletype = term
         end
         @outdoorresults << restaurant
       end

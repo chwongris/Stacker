@@ -20,6 +20,9 @@ app.Router = Backbone.Router.extend({
         current_user.rest_tile_search = new app.collections.RestTileList();
         current_user.event_tile_search = new app.collections.EventTileList();
 
+        current_user.rest_tile_totalsearch = new app.collections.RestTileList();
+        current_user.event_tile_totalsearch = new app.collections.EventTileList();
+
         current_user.stack_list = new app.collections.StackList();
 
 
@@ -28,22 +31,31 @@ app.Router = Backbone.Router.extend({
            var start = new app.views.StartView({ model: current_user });
            $('#content').html(start.render().el);
            initMap();
+           $('.datepicker').datepicker()
+          
+           var myDate = new Date();
+           var prettyDate =(myDate.getMonth()+1) + '/' + myDate.getDate() + '/' +
+           myDate.getFullYear();
+           $(".datepicker").val(prettyDate);
+
+           map.panBy(-200, 0);
+
            $('#calendar').fullCalendar({
-              header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: '',
-                ignoreTimezone: false
-              },
-              defaultView: 'agendaDay',
-              firstHour: 18,
-              allDaySlot: false,
-              selectable: true,
-              selectHelper: true,
-              editable: true,
-              droppable: true,
-              height: 500,
-              drop: function(date, allDay) {
+            header: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'agendaDay, agendaWeek',
+              ignoreTimezone: false
+            },
+            defaultView: 'agendaDay',
+            firstDay: 5,
+            firstHour: 18,
+            selectable: true,
+            selectHelper: true,
+            editable: true,
+            droppable: true,
+            height: 563,
+            drop: function(date, allDay) {
                 // alert("Dropped on " + date + " with allDay=" + allDay);
                 var dropped = current_user.rest_tile_search.get(this.id);
 
@@ -55,13 +67,13 @@ app.Router = Backbone.Router.extend({
                 
                 // assign it the date that was reported
                 if (copiedEventObject.start == undefined ){
-                copiedEventObject.start = date;
-                copiedEventObject.end = (date.getTime() + 1800000*4)/1000;
+                  copiedEventObject.start = date;
+                  copiedEventObject.end = (date.getTime() + 1800000*4)/1000;
                 }else{
-                copiedEventObject.start = copiedEventObject.start + "Z";
-                var time = $.fullCalendar.parseDate( copiedEventObject.start );
-                copiedEventObject.start = time;
-                copiedEventObject.end = (time.getTime() + 1800000*4)/1000;
+                  copiedEventObject.start = copiedEventObject.start + "Z";
+                  var time = $.fullCalendar.parseDate( copiedEventObject.start );
+                  copiedEventObject.start = time;
+                  copiedEventObject.end = (time.getTime() + 1800000*4)/1000;
                 }
                 
                 copiedEventObject.allDay = allDay;
@@ -72,12 +84,12 @@ app.Router = Backbone.Router.extend({
                 $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
               }
             });
-          }
-        });
-      }
-    });
-  },
-
-  
+}
 });
-   
+}
+});
+},
+
+
+});
+

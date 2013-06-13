@@ -5,8 +5,13 @@ app.views.EventTileView = Backbone.View.extend({
   template: JST['templates/event_tile'],
 
   render: function() {
+
+    var simpledate = $.fullCalendar.parseDate( this.model.attributes.event_datetime );
+    var startdate = $.fullCalendar.formatDate(simpledate, "h:mmtt" );
+
     this.$el.html(this.template({
-      model: this.model
+      model: this.model,
+      date: startdate
     }));
 
       var eventObject = {

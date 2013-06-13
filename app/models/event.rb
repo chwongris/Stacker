@@ -44,8 +44,14 @@ class Event < ActiveRecord::Base
         event.venue_cityzip = result["venue"]["extended_address"]
         event.latitude = result["venue"]["location"]["lat"]
         event.longitude = result["venue"]["location"]["lon"]
-        event.image_url = result["performers"].first["image"]
-        
+
+      
+        if result["performers"].first["image"] == nil
+            event.image_url = "http://images.elephantjournal.com/wp-content/uploads/2013/04/hands_in_the_air__in_concert_cc-100x100.jpg"
+        else
+              event.image_url = result["performers"].first["image"]
+        end
+
         end
         events << event
       end

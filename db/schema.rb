@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612031430) do
+ActiveRecord::Schema.define(:version => 20130613033118) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20130612031430) do
     t.float    "yelp_rating"
     t.string   "category"
     t.string   "yelp_url"
+    t.string   "tiletype"
   end
 
   create_table "stacks", :force => true do |t|
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20130612031430) do
     t.datetime "start"
     t.boolean  "allDay"
     t.string   "title"
+    t.integer  "stack_id"
   end
 
   create_table "timeshells", :force => true do |t|

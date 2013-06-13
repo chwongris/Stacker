@@ -22,6 +22,7 @@ gem "aws-s3", "~> 0.6.3"
 gem "fog", "~> 1.11.1"
 gem 'masonry-rails'
 gem 'select2-rails', :github => "argerim/select2-rails"
+ gem 'thin' 
 
 
 
@@ -47,7 +48,7 @@ group :test do
   gem 'database_cleaner'
   gem 'cucumber-rails'
   gem 'simplecov', :require => false
-  gem 'thin' 
+ 
   gem 'jasmine'
   gem 'poltergeist' 
 end

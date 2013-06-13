@@ -21,7 +21,7 @@ gem 'json'
 gem "aws-s3", "~> 0.6.3"
 gem "fog", "~> 1.11.1"
 gem 'masonry-rails'
-gem 'select2-rails', :github => "argerim/select2-rails"
+# gem 'select2-rails', :github => "argerim/select2-rails"
  gem 'thin' 
 
 

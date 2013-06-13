@@ -49,14 +49,7 @@ test: &test
   password:
   host: localhost
 
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: Stacker_production
-  pool: 5
-  username: chriswong
-  password:
-  host: localhost 
+
 
 cucumber:
   <<: *test

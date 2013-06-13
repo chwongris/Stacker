@@ -56,7 +56,7 @@ production:
   pool: 5
   username: chriswong
   password:
-  host: localhost
+  host: localhost 
 
 cucumber:
   <<: *test

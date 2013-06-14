@@ -113,8 +113,6 @@ app.Router = Backbone.Router.extend({
 
             $('#stackscroll').isotope({});
 
-            
-
 
         }
       })

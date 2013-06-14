@@ -174,6 +174,7 @@
         $('#searchresults').isotope({
           layoutMode : 'fitRows'
         });
+        $('#searchresults').isotope( 'shuffle');
 
         var gotodate = new Date(searchdate)
       
@@ -218,6 +219,7 @@ favoriteList: function(e) {
 
    showAll: function() {
      $('#searchresults').isotope({ filter: '' });
+     $('#searchresults').isotope( 'shuffle');
      zoomin(latlng); 
    },
 

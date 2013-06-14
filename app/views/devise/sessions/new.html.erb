@@ -1,6 +1,6 @@
 <% @no_controls = true %>
 
-<div class="span5 offset6">
+<div class="span6 offset5">
 
   <div class="padded">
     <div class="login box" style="margin-top: 80px;">
@@ -30,7 +30,7 @@
           <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
           <% end -%>
 
-          <div class="btn btn-blue btn-block" ><i class="icon-signin"></i><%= f.submit "Sign in" %></div>
+          <%= f.submit "Sign in" %>
           
           <% end %>
         </form>

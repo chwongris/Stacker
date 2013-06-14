@@ -22,13 +22,13 @@
         </a>
         <input type='text' id='areasearch' placeholder='Enter a location'/>
       </div>
-    <div id="buttons">
-      <button id="showall" class="btn btn-large btn-gray">All</button>
-      <button id="restaurantfilter" class="btn btn-large btn-red">Restaurants</button>
-      <button id="barfilter" class="btn btn-large btn-green">Bars</button>
-      <button id="dancefilter" class="btn btn-large btn-black">Nightlife</button>
-      <button id="concertfilter" class="btn btn-large btn-facebook">Concerts</button>
-    </div>
+      <div id="buttons">
+        <button id="showall" class="btn btn-large btn-gray">All</button>
+        <button id="restaurantfilter" class="btn btn-large btn-red">Restaurants</button>
+        <button id="barfilter" class="btn btn-large btn-green">Bars</button>
+        <button id="dancefilter" class="btn btn-large btn-black">Nightlife</button>
+        <button id="concertfilter" class="btn btn-large btn-facebook">Concerts</button>
+      </div>
     </div>
   </div>
 
@@ -45,19 +45,40 @@
     </div>
 
 
+   
+
+
+
     <div id="calendarbox" class="box span5">
-      <div class="box-header">
+      <div class="box-header"  style="height: 78px;">
         <div id="stacknamebox">
-          <input type='text' id='stackname' placeholder='Name Your Event!' style="float:left;"/>
+          <div class="row-fluid">
+            <div class="span8">
+           <input  type='text' id='stackname' placeholder='#stackname' style="margin-right:10px;"/>
+         </div>
+
+          <div class="action-nav-normal span4 ">
+            <div id="stackbutton" class="action-nav-button blue">
+              <a id="stackbut" title="Files">
+                <i class="icon-reorder"></i>
+                <span>Create Stack</span>
+              </a>
+            </div>
+          </div>
         </div>
-        <button id="stackbutton" class="btn btn-large btn-facebook">Create Stack</button>
       </div>
 
-      <div class="box-content">
-        <div id="calendar" class="fc">
-        </div>
-      </div>
+
+
+
 
     </div>
+
+    <div class="box-content">
+      <div id="calendar" class="fc">
+      </div>
+    </div>
+
+  </div>
 
 

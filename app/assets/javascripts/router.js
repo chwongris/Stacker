@@ -113,9 +113,8 @@ app.Router = Backbone.Router.extend({
 
             $('#calendar').fullCalendar({
               header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'agendaDay, agendaWeek',
+                left: 'prev,next',
+                right: '',
                 ignoreTimezone: false
               },
               defaultView: 'agendaDay',
@@ -125,7 +124,7 @@ app.Router = Backbone.Router.extend({
               selectHelper: true,
               editable: true,
               droppable: true,
-              height: 440,
+              height: 392,
               drop: function(date, allDay) {
                 // alert("Dropped on " + date + " with allDay=" + allDay);
                 // var dropped = current_user.rest_tile_search.findWhere(this.id);

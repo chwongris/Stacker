@@ -16,6 +16,33 @@ margin-right: auto;
 
 }
 
+#stackbutton{
+float: right;
+margin-right: 10px;
+margin-top: 10px;
+width: 180px;
+height: 80px;
+margin-bottom: 0px
+}
+
+i.icon-reorder{
+  float: left;
+margin-left: 20px;
+margin-right: 0px;
+}
+
+#stackbut{
+height: 55px;
+}
+
+#stackname{
+float: left;
+margin-top: 11px;
+margin-left: 14px;
+width: 80%;
+height: 52px;
+  font-size: 18px;
+}
 
 #stackscrollbox{
   overflow: scroll;
@@ -30,7 +57,9 @@ margin-right: auto;
   padding: 30px;
 }
 
-.avatar{
+
+
+.avatarstack{
 float: right;
 margin-top: 16px;
 margin-right: 10px;
@@ -159,8 +188,8 @@ body{
 }
 
 #calendarbox{
-  height: 34.8em;
-  margin-top: 13px;
+  height: 33.8em;
+  margin-top: 19px;
 }
 
 
@@ -168,7 +197,7 @@ body{
   width: 8em;
   height: 8em;
   background-color: $concert;
-  margin: 0.3em;
+  margin: 0.8em;
   padding: 1em;
   // box-shadow: 3px 3px 2px #888;
   border-radius: 5px;
@@ -180,20 +209,14 @@ body{
   width:8em;
 }
 
-// div.rest_tile :hover {
-// -webkit-transform: scale(1.25);
-// -moz-transform: scale(1.25);
-// position: relative;
-// z-index: 5;
-// }
 
 .rest_tile{
   width: 8em;
   height: 8em;
   background-color: $restaurant;
-  margin: 0.3em;
+  margin: 0.8em;
   padding: 1em;
-border: 1px solid #cfd3d3;
+  border: 1px solid #cfd3d3;
   border-radius: 5px;
   float:left;
 }
@@ -202,7 +225,7 @@ border: 1px solid #cfd3d3;
   width: 8em;
   height: 8em;
   background-color: $bar;
-  margin: 0.3em;
+  margin: 0.8em;
   padding: 1em;
   border: 1px solid #cfd3d3;
   border-radius: 5px;
@@ -213,7 +236,7 @@ border: 1px solid #cfd3d3;
   width: 8em;
   height: 8em;
   background-color: $dance;
-  margin: 0.3em;
+  margin: 0.8em;
   padding: 1em;
   border: 1px solid #cfd3d3;
   border-radius: 5px;
@@ -261,7 +284,7 @@ border: 1px solid #cfd3d3;
 }
 
 #googlemap{
-  height:20em;
+  height:21em;
   width:100%;
 }
 
@@ -284,7 +307,7 @@ border: 1px solid #cfd3d3;
 }
 
 #map-canvas{
-  height:20em;
+  height:22em;
   width:100%;
 }
 
@@ -320,4 +343,8 @@ border: 1px solid #cfd3d3;
 
 input{
   max-width: 435px; 
+}
+
+.carousel{
+  height: 400px;
 }

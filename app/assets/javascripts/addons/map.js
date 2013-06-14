@@ -99,6 +99,10 @@ function addMarker(latitude, longitude, title, whatami, info) {
     infowindow.open(map,marker);
   });
 
+  google.maps.event.addListener( map, 'click', function() { 
+    infowindow.open( null, null ); 
+  });
+
   markers.push(marker);
   latlng.push(markerLatlng);
 };

@@ -1,7 +1,7 @@
-  var restlatlng = [];
-  var barlatlng = [];
-  var dancelatlng = [];
-  var concertlatlng = [];
+var restlatlng = [];
+var barlatlng = [];
+var dancelatlng = [];
+var concertlatlng = [];
 
 app.views.StartView = Backbone.View.extend({
   tagName: 'div',
@@ -32,7 +32,7 @@ app.views.StartView = Backbone.View.extend({
 
   popup: function(){
 
-  var data = $(event.target)[0].id
+  var data = $(event.target).parent().parent()[0].id
   var view = new app.views.modalView( {id:data} );
   view.render();
   $('#modalpop').html(view.el);

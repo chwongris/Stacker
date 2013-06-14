@@ -7,12 +7,15 @@ class Stack < ActiveRecord::Base
 
 
   def as_json(options = {})
-    super( { :include => { :tiles => { :include => :tileable } } }.merge(options))
+    super( { :include => [{  :tiles => { :include => :tileable } },:user] }.merge(options))
   end
 
-  # def as_json(options = {})
-  #   super( { :include => :tiles }.merge(options))
-  # end
+ # def as_json(options = {})
+ #    super( { :include => {  :tiles => { :include => :tileable } } }.merge(options))
+ #  end
+
+
+
 
   # def as_json(options = {})
   #   super({ :include => :skills, :only => [:id, :title, :body, :url, :user_id] }.merge(options))

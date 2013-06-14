@@ -4,12 +4,12 @@ app.views.navigationView = Backbone.View.extend({
   events: {
      'click #showStacks': 'showStacks',
      'click #createStack': 'createStack',
-     'click #showUsers' : 'clicktest'
+     'click #showUsers' : 'allStacks'
   },
 
   showStacks: function() {
      // app.navigate('userstacks');
-new app.Router().navigate("userstacks", {trigger: true});
+    new app.Router().navigate("userstacks", {trigger: true});
  
     // event.preventDefault();
     // var id = $(event.target).data("id");
@@ -17,7 +17,13 @@ new app.Router().navigate("userstacks", {trigger: true});
   },
 
   createStack: function(){
-new app.Router().navigate(" ", {trigger: true});
+    new app.Router().navigate(" ", {trigger: true});
+
+  },
+
+  allStacks: function(){
+    
+    new app.Router().navigate("alluserstacks", {trigger: true});
 
   }
 

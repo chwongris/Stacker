@@ -4,13 +4,12 @@ app.views.StackTileView = Backbone.View.extend({
   className: 'stacktile',
   template: JST['templates/stacktile'],
 
-
-
   render: function() {
-  var startDateObject = $.fullCalendar.parseDate( this.model.start );
+
+    var startDateObject = new Date( this.model.start );
     var startDate = $.fullCalendar.formatDate(startDateObject, "h:mmtt" );
 
-     var endDateObject = $.fullCalendar.parseDate( this.model.end );
+    var endDateObject = new Date( this.model.end );
     var endDate = $.fullCalendar.formatDate(endDateObject, "h:mmtt" );
 
     this.$el.html(this.template({
@@ -18,7 +17,6 @@ app.views.StackTileView = Backbone.View.extend({
       startdate: startDate,
       enddate: endDate
     }));
-
     return this;
   }
 

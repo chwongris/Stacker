@@ -23,6 +23,13 @@ def show
 
 end
 
+def allindex
+  
+  @stacks = Stack.all
+  render :json => @stacks
+
+end
+
 
 
 

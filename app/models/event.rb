@@ -13,7 +13,8 @@ class Event < ActiveRecord::Base
                   :venue_name,
                   :latitude,
                   :longtitude,
-                  :tiletype
+                  :tiletype,
+                  :image_url
 
   has_many :tiles, :as => :tileable
 
@@ -46,11 +47,11 @@ class Event < ActiveRecord::Base
         event.latitude = result["venue"]["location"]["lat"]
         event.longitude = result["venue"]["location"]["lon"]
         event.tiletype = "Concerts"
-      
-        if result["performers"].first["image"] == nil
+    
+        if result["performers"].first["image"] == nil || result["performers"].first["image"] == ""
             event.image_url = "http://images.elephantjournal.com/wp-content/uploads/2013/04/hands_in_the_air__in_concert_cc-100x100.jpg"
         else
-              event.image_url = result["performers"].first["image"]
+            event.image_url = result["performers"].first["image"]
         end
 
         end

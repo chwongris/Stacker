@@ -11,6 +11,7 @@ app.views.RestTileView = Backbone.View.extend({
 
     var eventObject = {
         title: this.model.attributes.name, // use the element's text as the event title
+        tiletype: this.model.attributes.tiletype,
         type: this.model.constructor.modelType
       };
       

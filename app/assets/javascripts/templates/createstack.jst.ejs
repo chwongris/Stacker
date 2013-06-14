@@ -1,9 +1,14 @@
+
 <div class="box-header">
+<div class="row-fluid">
   <div class="title">
-<h4><%= this.model.stack_list.last().attributes.name %></h4>
+    <h4>#<%= this.model.stack_list.last().attributes.name %></h4>
   </div>
+  
   <div class="avatar" style="float:right;">
-  <img class="avatar-small" src="<%=this.model.attributes.image_url_small%>">
+     <%=this.model.attributes.first_name%> <%=this.model.attributes.last_name%>
+    <img class="avatar-small" src="<%=this.model.attributes.image_url_small%>">
+  </div>
 </div>
 </div>
 

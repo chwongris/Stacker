@@ -56,7 +56,12 @@ def self.restaurant_search(latitude, longitude, term)
         restaurant.yelp_stars_url = rest["rating_img_url"]
         restaurant.category = rest["categories"][0][0]
         restaurant.yelp_url = rest["url"] 
-        restaurant.image_url = rest["image_url"]
+         if rest["image_url"] == nil || rest["image_url"] == ""
+      
+            restaurant.image_url = "http://s3-media3.ak.yelpcdn.com/assets/2/www/img/305e17fe6ed8/gfx/blank_biz_medium_sq.png"
+        else
+            restaurant.image_url = rest["image_url"]
+        end
         restaurant.tiletype = term
         end
         @outdoorresults << restaurant

@@ -1,12 +1,21 @@
-$restaurant: #B20000;
-$bar: #0d7d10;
-$concert: #1461ad;
-$dance: #5C5B5B;
+$restaurant: #CF5979;
+$bar: #86CA57;
+$concert: #486897;
+$dance: #95b7b5;
 
 #createstack{
   width:24.8em;
   margin: 15px;
+  margin-left: auto;
+margin-right: auto;
 }
+
+#createstackpin{
+  width:24.8em;
+  margin: 15px;
+
+}
+
 
 #stackscrollbox{
   overflow: scroll;
@@ -21,6 +30,39 @@ $dance: #5C5B5B;
   padding: 30px;
 }
 
+.avatar{
+float: right;
+margin-top: 16px;
+margin-right: 10px;
+height: 31px;
+vertical-align: middle;
+line-height: 31px;
+}
+
+img.avatar-small{
+  margin-left: 10px;
+}
+
+.modalbox{
+
+  // height: 60em;
+  // width: 100em;
+
+}
+
+#modal-simple{
+
+  height: 52em;
+  width: 70em;
+  right: 40px
+
+}
+
+iframe{
+  height: 49em;
+  width: 69.5em;
+}
+
 h3.stack{
 font-size: 24.5px;
 width: 10em;
@@ -31,9 +73,9 @@ margin-left: 1em;
 .stacktile{
  width: 20em;
  height: 5em;
- margin: 0.2em;
+ margin: 0.4em;
  padding: 1em;
- box-shadow: 3px 3px 2px #888;
+ // box-shadow: 3px 3px 2px #888;
  border-radius: 5px;
 
 }
@@ -71,8 +113,8 @@ margin-left: 1em;
   width: 15em;
   max-height: 5em;
   margin-left: 5.5em;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  // background-color: rgba(0, 0, 0, 0.6);
+  // border-top: 1px solid rgba(0, 0, 0, 0.3);
   top: 0em;
 }
 
@@ -89,7 +131,7 @@ margin-left: 1em;
 }
 
 #scrollbox{
-  margin-top: 15px;
+  margin-top: 10px;
   // padding-left: 1em;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -124,12 +166,13 @@ body{
 
 .event_tile{
   width: 8em;
-  height: 9em;
+  height: 8em;
   background-color: $concert;
   margin: 0.3em;
   padding: 1em;
-  box-shadow: 3px 3px 2px #888;
+  // box-shadow: 3px 3px 2px #888;
   border-radius: 5px;
+  border: 1px solid #cfd3d3;
   float:left;
 }
 
@@ -146,33 +189,33 @@ body{
 
 .rest_tile{
   width: 8em;
-  height: 9em;
+  height: 8em;
   background-color: $restaurant;
   margin: 0.3em;
   padding: 1em;
-  box-shadow: 3px 3px 2px #888;
+border: 1px solid #cfd3d3;
   border-radius: 5px;
   float:left;
 }
 
 .bar_tile{
   width: 8em;
-  height: 9em;
+  height: 8em;
   background-color: $bar;
   margin: 0.3em;
   padding: 1em;
-  box-shadow: 3px 3px 2px #888;
+  border: 1px solid #cfd3d3;
   border-radius: 5px;
   float:left;
 }
 
 .dance_tile{
   width: 8em;
-  height: 9em;
+  height: 8em;
   background-color: $dance;
   margin: 0.3em;
   padding: 1em;
-  box-shadow: 3px 3px 2px #888;
+  border: 1px solid #cfd3d3;
   border-radius: 5px;
   float:left;
 }
@@ -209,11 +252,12 @@ body{
 #tileoverlay{
   position: absolute;
   overflow:hidden;
-  width: 100%;
+  width: 7.8em;
   max-height: 7em;
   background-color: rgba(0, 0, 0, 0.6);
   border-top: 1px solid rgba(0, 0, 0, .3);
   top: 0;
+  padding-left:0.2em;
 }
 
 #googlemap{
@@ -233,7 +277,10 @@ body{
 }
 
 .yelpstars{
+  position:relative;
   z-index: 999;
+  top:-1.4em;
+  left: 0.2em;
 }
 
 #map-canvas{

@@ -22,6 +22,13 @@ class TilesController < ApplicationController
     render :json => @events
   end
 
+  def start
+  @starttiles = Restaurant.all
+  render :json => @starttiles
+  end
+
+
+
   def index
     
     @user_tiles = current_user.userTiles

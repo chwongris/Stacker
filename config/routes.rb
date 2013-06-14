@@ -18,6 +18,7 @@ Stacker::Application.routes.draw do
 
   match 'restaurant_tiles' => 'tiles#restaurantsearch'
   match 'event_tiles' => 'tiles#eventsearch'
+  match 'starttiles' => 'tiles#start'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

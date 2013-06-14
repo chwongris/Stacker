@@ -9,6 +9,7 @@ app.Router = Backbone.Router.extend({
     home: function () {
       var a = new app.views.navigationView; //loadview to click
       //load the user and its saved restaurants
+
       var current_user = new app.models.User;
       current_user.url = 'users/me';
       current_user.fetch({
@@ -41,6 +42,51 @@ app.Router = Backbone.Router.extend({
              $(".datepicker").val(prettyDate);
 
              map.panBy(-200, 0);
+
+             startTiles = new app.collections.RestTileList();
+     
+
+            //initial tile load
+      startTiles.url = '/starttiles';
+      startTiles.fetch({
+        success: function(data){
+
+          var _this = this;
+
+
+        data.models.forEach(function(tile,i) {
+        addMarker(tile.attributes.latitude, tile.attributes.longitude, tile.attributes.name,tile.attributes.tiletype, tile.attributes.name);
+        var searchresults = new app.views.RestTileView({ model: tile, id: tile.attributes.yelp_url });
+
+        switch(tile.attributes.tiletype)
+        {
+          case "Restaurants":
+          $('#searchresults').append(searchresults.render().el);
+          var RestaurantLatlng = new google.maps.LatLng(tile.attributes.latitude, tile.attributes.longitude);
+          latlng.push(RestaurantLatlng);
+          restlatlng.push(RestaurantLatlng);
+          break;
+
+          case "Bars":
+          $('#searchresults').append(searchresults.render().$el.removeClass("rest_tile").addClass("bar_tile"));
+          var BarLatlng = new google.maps.LatLng(tile.attributes.latitude, tile.attributes.longitude);
+          latlng.push(BarLatlng);
+          barlatlng.push(BarLatlng);
+          break;
+
+          case "DanceClubs":
+          $('#searchresults').append(searchresults.render().$el.removeClass("rest_tile").addClass("dance_tile"));
+          var DanceLatlng = new google.maps.LatLng(tile.attributes.latitude, tile.attributes.longitude);
+          latlng.push(DanceLatlng);
+          dancelatlng.push(DanceLatlng);
+          break;
+        }
+
+      });
+
+
+        }
+      });
 
              $('#calendar').fullCalendar({
               header: {
@@ -86,10 +132,11 @@ app.Router = Backbone.Router.extend({
                     $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
                   }
                 });
-  }
-  });
-  }
-  });
+              }
+              });
+              }
+              });
+      
   },
 
   userspage: function() {

@@ -37,6 +37,8 @@ core_admin.png: core_admin-f45c70a77a7a57556a7cb2757cf9ef3b.png
 core_admin/index.png: core_admin-f45c70a77a7a57556a7cb2757cf9ef3b.png
 core_admin_small.png: core_admin_small-fbad42dc27f3bbe8f93220e92e2526f0.png
 core_admin_small/index.png: core_admin_small-fbad42dc27f3bbe8f93220e92e2526f0.png
+facebook-login-button.png: facebook-login-button-0143ecef62f505deb8fe0813d3a16947.png
+facebook-login-button/index.png: facebook-login-button-0143ecef62f505deb8fe0813d3a16947.png
 glyphicons-halflings-white.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
 glyphicons-halflings-white/index.png: glyphicons-halflings-white-6cccd17a7aed91dbc0157d343c68c0d9.png
 glyphicons-halflings.png: glyphicons-halflings-2851b489e8c39f8fad44fc10efb99c3e.png

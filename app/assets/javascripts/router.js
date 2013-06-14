@@ -1,30 +1,31 @@
 app.Router = Backbone.Router.extend({
 
-  routes: {
-    '' : 'home',
-    '_=_' : 'home',
-    'userstacks' : 'userstacks'
-  },
+    routes: {
+      '' : 'home',
+      '_=_' : 'home',
+      'userstacks' : 'userspage'
+    },
 
-  home: function () {
-    //load the user and its saved restaurants
-    var current_user = new app.models.User;
-    current_user.url = 'users/me';
-    current_user.fetch({
-      success: function(user, response, options){
+    home: function () {
+      var a = new app.views.navigationView; //loadview to click
+      //load the user and its saved restaurants
+      var current_user = new app.models.User;
+      current_user.url = 'users/me';
+      current_user.fetch({
+        success: function(user, response, options){
 
-        current_user.id = user.id
-        current_user.RestTileList = new app.collections.RestTileList();
-        current_user.RestTileList.url = '/tiles';
-        current_user.RestTileList.on("reset", this.updateCounts);
+          current_user.id = user.id
+          current_user.RestTileList = new app.collections.RestTileList();
+          current_user.RestTileList.url = '/tiles';
+          current_user.RestTileList.on("reset", this.updateCounts);
 
-        current_user.rest_tile_search = new app.collections.RestTileList();
-        current_user.event_tile_search = new app.collections.EventTileList();
+          current_user.rest_tile_search = new app.collections.RestTileList();
+          current_user.event_tile_search = new app.collections.EventTileList();
 
-        current_user.rest_tile_totalsearch = new app.collections.RestTileList();
-        current_user.event_tile_totalsearch = new app.collections.EventTileList();
+          current_user.rest_tile_totalsearch = new app.collections.RestTileList();
+          current_user.event_tile_totalsearch = new app.collections.EventTileList();
 
-        current_user.stack_list = new app.collections.StackList();
+          current_user.stack_list = new app.collections.StackList();
 
 
           current_user.RestTileList.fetch({
@@ -56,17 +57,17 @@ app.Router = Backbone.Router.extend({
               editable: true,
               droppable: true,
               height: 440,
-                drop: function(date, allDay) {
-                  // alert("Dropped on " + date + " with allDay=" + allDay);
-                  var dropped = current_user.rest_tile_search.get(this.id);
+              drop: function(date, allDay) {
+                    // alert("Dropped on " + date + " with allDay=" + allDay);
+                    var dropped = current_user.rest_tile_search.get(this.id);
 
-                  // retrieve the dropped element's stored Event Object
-                  var originalEventObject = $(this).data('eventObject');
+                    // retrieve the dropped element's stored Event Object
+                    var originalEventObject = $(this).data('eventObject');
 
-                  // we need to copy it, so that multiple events don't have a reference to the same object
-                  var copiedEventObject = $.extend({}, originalEventObject);
-                  
-                  // assign it the date that was reported
+                    // we need to copy it, so that multiple events don't have a reference to the same object
+                    var copiedEventObject = $.extend({}, originalEventObject);
+                    
+                    // assign it the date that was reported
                     if (copiedEventObject.start == undefined ){
                       copiedEventObject.start = date;
                       copiedEventObject.end = (date.getTime() + 1800000*4)/1000;
@@ -76,25 +77,50 @@ app.Router = Backbone.Router.extend({
                       copiedEventObject.start = time;
                       copiedEventObject.end = (time.getTime() + 1800000*4)/1000;
                     }
-                  
-                  copiedEventObject.allDay = allDay;
-                  copiedEventObject.cid = this.id;
-                  
-                  // render the event on the calendar
-                  // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
-                  $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
-                }
-              });
-            }
-          });
-        }
-      });
+                    
+                    copiedEventObject.allDay = allDay;
+                    copiedEventObject.cid = this.id;
+                    
+                    // render the event on the calendar
+                    // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
+                    $('#calendar').fullCalendar('renderEvent', copiedEventObject, true);
+                  }
+                });
+  }
+  });
+  }
+  });
   },
 
-  userstacks: function() {
-    
-  }
+  userspage: function() {
+    var a = new app.views.navigationView; 
 
+   $('#content').html("").append("<div id='stackscrollbox'><div id='stackscroll'></div></div>");
+
+   var current_user = new app.models.User;
+   current_user.stack_list = new app.collections.StackList;
+   current_user.url = 'users/me';
+   current_user.fetch({
+      success: function(user, response, options){
+
+      current_user.stack_list.fetch({
+        success: function(user, response, options){
+
+          response.forEach(function(stack,i) {
+            var stackindex = new app.views.StackIndex({model: stack}).render()
+            $('#stackscroll').append(stackindex.el);
+          });
+
+            $('#stackscroll').isotope({});
+
+            
+
+
+        }
+      })
+    }
+    });
+  }
 
 });
 

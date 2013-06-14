@@ -5,6 +5,20 @@ $dance: #5C5B5B;
 
 #createstack{
   width:24.8em;
+  margin: 15px;
+}
+
+#stackscrollbox{
+  overflow: scroll;
+  height: 800px;
+  padding-left: auto;
+  padding-right: auto;
+}
+
+#stackscroll{
+  overflow: scroll;
+
+  padding: 30px;
 }
 
 h3.stack{
@@ -208,9 +222,13 @@ body{
 }
 
 .waiting{
-  background:url('/assets/waiting.gif');
-  height: 180px;
-  width: 200px;
+  background:url('/assets/loading.gif');
+  height: 60px;
+  width: 60px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 200px;
+  z-index: 999;
   display: none;
 }
 

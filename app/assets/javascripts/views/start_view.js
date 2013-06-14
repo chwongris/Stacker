@@ -31,6 +31,9 @@
 
   },
 
+  
+
+
   datePicker: function() {
     var searchdate = $('.datepicker').val();
     var gotodate = new Date(searchdate);
@@ -49,9 +52,10 @@
    var searchdate = $('.datepicker').val();
    var _this = this;
 
-   $('.waiting').toggle();
+   
    $('#searchresults').html("");
    $('#searchresults').isotope( 'destroy' );
+   $('.waiting').show();
 
 
 
@@ -61,7 +65,7 @@
     type: 'POST',
     data: {searchterm: searchterm},
     success: function (data){
-
+      $('.waiting').hide();
       _this.model.rest_tile_search.reset();
       _this.model.rest_tile_search.add( data );
       _this.model.rest_tile_totalsearch.add( data );
@@ -172,7 +176,7 @@
         });
 
         var gotodate = new Date(searchdate)
-      // $('.waiting').toggle();
+      
       // stroll.bind( "#searchresults" );
       $('#calendar').fullCalendar( 'gotoDate', gotodate )
     }

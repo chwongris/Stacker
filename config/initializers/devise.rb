@@ -16,9 +16,14 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
   require "omniauth-facebook"
   OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development? 
+
+  if Rails.env.development?
+  config.omniauth :facebook, "496985900375395", "6cc4fcdf245372d66138e51d43cdca5b"
+      {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
+  else
   config.omniauth :facebook, "500903599975531", "a4a79c0540fd1aafd410cdaaa000a307"
       {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
-
+  end
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
   # just :email. You can configure it to use [:username, :subdomain], so for

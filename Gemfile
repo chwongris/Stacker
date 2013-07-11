@@ -21,8 +21,11 @@ gem 'json'
 gem "aws-s3", "~> 0.6.3"
 gem "fog", "~> 1.11.1"
 gem 'masonry-rails'
+gem 'rails_admin'
 # gem 'select2-rails', :github => "argerim/select2-rails"
- gem 'thin' 
+gem 'thin' 
+gem 'font-awesome-sass-rails'
+
 
 
 
@@ -56,6 +59,7 @@ end
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
   gem "better_errors"
+  gem 'binding_of_caller'
 end
 
 # To use ActiveModel has_secure_password

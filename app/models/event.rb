@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
                   :venue_cityzip, 
                   :venue_name,
                   :latitude,
-                  :longtitude,
+                  :longitude,
                   :tiletype,
                   :image_url
 
@@ -23,10 +23,11 @@ class Event < ActiveRecord::Base
   end
 
   def self.get_events(latitude, longitude, date)
-    events = []
 
+    events = []
+  # binding.pry
       @seatgeek ||= SeatGeek::Connection.new
-      results = @seatgeek.events(lat:latitude, lon:longitude, range:"8mi", sort:"score.desc", per_page: 100, datetime_utc: date)
+      results = @seatgeek.events(lat:latitude, lon:longitude, range:"8mi", sort:"score.desc", per_page: 100, datetime_local: date)
       results["events"].each do |result|
 
         unless Event.where('event_url = ?', result["url"]).empty?
@@ -46,6 +47,7 @@ class Event < ActiveRecord::Base
         event.venue_cityzip = result["venue"]["extended_address"]
         event.latitude = result["venue"]["location"]["lat"]
         event.longitude = result["venue"]["location"]["lon"]
+        
         event.tiletype = "Concerts"
     
         if result["performers"].first["image"] == nil || result["performers"].first["image"] == ""

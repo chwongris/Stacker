@@ -1,6 +1,6 @@
 class UserTile < ActiveRecord::Base
-  # attr_accessible :tile_id, :user_id
+  attr_accessible :tile_id, :user_id
 
-  # belongs_to :user
-  # belongs_to :tile
+  belongs_to :user
+  belongs_to :tile
 end

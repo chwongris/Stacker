@@ -17,6 +17,7 @@ class TilesController < ApplicationController
     ipcity = result.data["city"]
     latlng = Tile.new.location_search(params[:searchterm], ipcity)
     @events = Event.get_events(latlng[0],latlng[1], params[:searchdate])
+
     render :json => @events
   end
 

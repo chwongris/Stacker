@@ -19,7 +19,18 @@ def show
 end
 
 def me
-  render :json => current_user
+
+  result = request.location
+  ipcity = result.data["city"]
+
+  if ipcity == ""
+  current_user.current_city = "New York"
+  else
+  current_user.current_city = ipcity
+  end
+
+  render :json => current_user 
+
 end
 
 end

@@ -60,6 +60,22 @@ app.views.StartView = Backbone.View.extend({
     var searchdate = $('.datepicker').val();
     var _this = this;
 
+    var geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode({ 'address': searchterm }, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+      console.log(results);
+    }
+    });
+
+    //geocode by ip on the controller, put in field and then merge into clients side geocoder
+
+      // map.setCenter(results[0].geometry.location);
+    //   var marker = new google.maps.Marker({
+    //   map: map,
+    //   position: results[0].geometry.location
+    // });
+
     $('#searchresults').html("");
     $('#searchresults').isotope( 'destroy' );
     $('.waiting').show();
@@ -146,7 +162,7 @@ app.views.StartView = Backbone.View.extend({
         _this.model.event_tile_totalsearch.add( data );
 
         _this.model.event_tile_search.models.forEach(function(tile,i) {
-          addMarker(tile.attributes.latitude, tile.attributes.longitude, tile.attributes.name,'concert', tile.attributes.name);
+          addMarker(tile.attributes.latitude, tile.attributes.longitude, tile.attributes.name,'Concerts', tile.attributes.name);
           var searchresults = new app.views.EventTileView({ model: tile, id: tile.attributes.event_url });
           _this.$el.find('#searchresults').append(searchresults.render().el);
           var ConcertLatlng = new google.maps.LatLng(tile.attributes.latitude, tile.attributes.longitude);

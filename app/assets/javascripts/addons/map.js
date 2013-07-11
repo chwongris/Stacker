@@ -67,7 +67,7 @@ function addMarker(latitude, longitude, title, whatami, info) {
       }
     //this way we still use the default marker when there is none set
     switch (whatami) {
-        case 'concert':
+        case 'Concerts':
         markerSettings.icon = '/assets/concertmarker.png';
         break;
 
